@@ -11,6 +11,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
+import javax.annotation.Nullable;
+
 public class GuiBlock extends BlockWithEntity {
 
 	public GuiBlock() {
@@ -23,13 +25,15 @@ public class GuiBlock extends BlockWithEntity {
 		return ActionResult.SUCCESS;
 	}
 
+	@Nullable
 	@Override
-	public BlockEntity createBlockEntity(BlockView var1) {
-		return new GuiBlockEntity();
+	public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+		return new GuiBlockEntity(pos, state);
 	}
 
 	@Override
 	public BlockRenderType getRenderType(BlockState state) {
 		return BlockRenderType.MODEL;
 	}
+
 }
